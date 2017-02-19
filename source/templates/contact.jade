@@ -1,7 +1,13 @@
 extend default
 
 block content
-  div.content
+  if msg
+    span
+      p 
+        i.fa.fa-thumbs-up.inline 
+        span &nbsp; Awesome, I'll be in touch.
+  else
+    div.content
     form(action='/contact', name='contact', id='contact', method='post')
       fieldset
         p

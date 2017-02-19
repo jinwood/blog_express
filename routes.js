@@ -36,16 +36,8 @@ module.exports = function(app){
 
     app.post('/contact', function(req, res, next){
         var template = jade.compileFile(__dirname + '/source/templates/contact.jade');     
-        var html;       
-        var sent = mail.sendMail(req.body);
-
-        if(sent){
-            html = template({title: 'Contact', msg: 'An error occured sending your message'});
-            res.send(html);
-        }else{
-            html = template({title: 'Contact', msg: 'Message sent!'});
-            res.send(html);
-        }
+        mail.sendMail(req.body);
+        res.send(template({title: 'Contact', msg: 'Message sent!'}));
     });
 
 

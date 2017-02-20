@@ -7,6 +7,7 @@
 }
 body {
   font-family: 'Source Code Pro', monospace;
+  background-color: #c9c9c9;
 }
 .header {
   margin-bottom: 0;
@@ -64,7 +65,7 @@ fieldset input {
   font-family: Tahoma, sans-serif;
 }
 fieldset textarea {
-  width: 600px;
+  width: 100%;
   height: 120px;
   border: 1px solid #ccc;
   border-radius: 2px;

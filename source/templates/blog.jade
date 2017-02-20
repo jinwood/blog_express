@@ -1,5 +1,12 @@
 extend default
 
 block content
-  p.
-    Coming soon!
+  div.row
+    each post, i in posts
+      div.col-md-8.col-md-offset-2
+        p=post.title
+        p Author - Julian
+        p=post.dateCreated
+        each paragraph, x in post.content
+          p!=paragraph
+        hr

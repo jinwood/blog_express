@@ -1,5 +1,6 @@
 var jade = require('jade');
 var mail = require('./mail');
+var blog = require('./blog');
 
 module.exports = function(app){
 
@@ -16,8 +17,9 @@ module.exports = function(app){
 
     app.get('/blog', function(req, res, next){
         try{
+            var posts = blog.getAllPosts();
             var template = jade.compileFile(__dirname + '/source/templates/blog.jade');            
-            var html = template({title:'Blog'});
+            var html = template({title:'Blog', posts: posts});
             res.send(html);
         }catch(e){
             next(e);

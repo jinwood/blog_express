@@ -1,5 +1,14 @@
 extend default
 
 block content
-  p.
-    Coming soon!
+  div.row
+    each post, i in posts
+      div.col-md-8.col-md-offset-2
+        span
+          p=post.meta.Title
+        p
+          span Author - 
+            span #{post.meta.Author}
+        p=post.meta.DateCreated
+        div!{post.html}
+        hr

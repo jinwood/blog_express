@@ -13,6 +13,8 @@ body {
   margin-bottom: 0;
   background: url("../../images/header.jpg");
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .header .page-title {
   font-weight: 200;

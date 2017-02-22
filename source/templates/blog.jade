@@ -4,8 +4,11 @@ block content
   div.row
     each post, i in posts
       div.col-md-8.col-md-offset-2
-        p=post.title
-        p Author - Julian
-        p=post.dateCreated
-        div!{posts}
+        span
+          p=post.meta.Title
+        p
+          span Author - 
+            span #{post.meta.Author}
+        p=post.meta.DateCreated
+        div!{post.html}
         hr

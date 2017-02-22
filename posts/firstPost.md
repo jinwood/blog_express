@@ -14,4 +14,4 @@ Next on my list of todos is ditching of bootstrap (its quite heavy for the very 
 
 The blog is using a very simple document storage, which is fine for the time being. However I'd like to write an admin system with a WYSIWYG editor, etc.
 
-You can follow along with my progress at the GitHub repository [here.](https://github.com/jinwood)
+You can follow along with my progress at the GitHub repository [here.](https://github.com/jinwood/blog_express)

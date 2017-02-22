@@ -1,54 +1,40 @@
 var jade = require('jade');
-var mail = require('./mail');
-var blog = require('./blog');
 var fs = require('fs');
 var path = require('path');
 var mime = require('mime');
+
+var mail = require('./mail');
+var blog = require('./blog');
+var errorHandler = require('./handlers/erorrHandler');
 
 module.exports = function(app){
 
     //web
     app.get('/', function(req, res, next){ 
-        try{
-            var template = jade.compileFile(__dirname + '/source/templates/homepage.jade');
-            var html = template({title:'Home'});
-            res.send(html);
-        }catch(e){
-            next(e);
-        }
+        foo();
+        var template = jade.compileFile(__dirname + '/source/templates/homepage.jade');
+        var html = template({title:'Home'});
+        res.send(html);
     });
 
     app.get('/resume', function(req, res, next){
-        try{
-            var template = jade.compileFile(__dirname + '/source/templates/resume.jade');
-            var html = template({title:'My Resume'});
-            res.send(html);
-        }catch(e){
-            next(e);
-        }
+        var template = jade.compileFile(__dirname + '/source/templates/resume.jade');
+        var html = template({title:'My Resume'});
+        res.send(html);
     });
 
     app.get('/blog', function(req, res, next){
-        try{
-            blog.getAllPosts(res,function(res, posts){
-                var template = jade.compileFile(__dirname + '/source/templates/blog.jade');            
-                var html = template({title:'Blog', posts: posts});
-                res.send(html);
-            });
-            
-        }catch(e){
-            next(e);
-        }
+        blog.getAllPosts(res,function(res, posts){
+            var template = jade.compileFile(__dirname + '/source/templates/blog.jade');            
+            var html = template({title:'Blog', posts: posts});
+            res.send(html);
+        });
     });
 
     app.get('/contact', function(req, res, next){
-        try{
-            var template = jade.compileFile(__dirname + '/source/templates/contact.jade');            
-            var html = template({title:'Contact'});
-            res.send(html);
-        }catch(e){
-            next(e);
-        }
+        var template = jade.compileFile(__dirname + '/source/templates/contact.jade');            
+        var html = template({title:'Contact'});
+        res.send(html);
     });
 
     app.post('/contact', function(req, res, next){
@@ -60,46 +46,35 @@ module.exports = function(app){
 
     //api
     app.get('/api/resume/json', function(req, res, next){
-        try{
-            fs.readFile('./privateSettings.json', 'utf8', function(err, data){
-                res.json(JSON.parse(data).cv);
-            });
-        }catch(e){
-            next(e);
-        }
+        fs.readFile('./privateSettings.json', 'utf8', function(err, data){
+            res.json(JSON.parse(data).cv);
+        });
     });
     
     app.get('/api/resume/pdf', function(req, res, next){
-        try{
-            var file = __dirname + '/static/pdfs/JulianInwoodResume.pdf';
+        var file = __dirname + '/static/pdfs/JulianInwoodResume.pdf';
 
-            var filename = path.basename(file);
-            var mimetype = mime.lookup(file);
+        var filename = path.basename(file);
+        var mimetype = mime.lookup(file);
 
-            res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-            res.setHeader('Content-type', mimetype);
+        res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+        res.setHeader('Content-type', mimetype);
 
-            var filestream = fs.createReadStream(file);
-            filestream.pipe(res);
-        }catch(e){
-            next(e);
-        }
+        var filestream = fs.createReadStream(file);
+        filestream.pipe(res);
     });
 
 
     // Handle 404
     app.use(function(req, res) {
-        try{
-            var template = jade.compileFile(__dirname + '/source/templates/404.jade');
-            var html = template({title:'404: Something\'s missing...'});
-            res.send(html, 404);
-        }catch(e){
-
-        }
+        var template = jade.compileFile(__dirname + '/source/templates/404.jade');
+        var html = template({title:'404: Something\'s missing...'});
+        res.send(html, 404);
     });
     
     // Handle 500
     app.use(function(error, req, res, next) {
+        errorHandler.error(error);
         try{
             var template = jade.compileFile(__dirname + '/source/templates/500.jade');
             var html = template({title:'500: You blew it up!!'});

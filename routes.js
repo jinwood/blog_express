@@ -11,7 +11,6 @@ module.exports = function(app){
 
     //web
     app.get('/', function(req, res, next){ 
-        foo();
         var template = jade.compileFile(__dirname + '/source/templates/homepage.jade');
         var html = template({title:'Home'});
         res.send(html);

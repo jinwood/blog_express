@@ -1,6 +1,9 @@
 var jade = require('jade');
 var mail = require('./mail');
 var blog = require('./blog');
+var fs = require('fs');
+var path = require('path');
+var mime = require('mime');
 
 module.exports = function(app){
 
@@ -9,6 +12,16 @@ module.exports = function(app){
         try{
             var template = jade.compileFile(__dirname + '/source/templates/homepage.jade');
             var html = template({title:'Home'});
+            res.send(html);
+        }catch(e){
+            next(e);
+        }
+    });
+
+    app.get('/resume', function(req, res, next){
+        try{
+            var template = jade.compileFile(__dirname + '/source/templates/resume.jade');
+            var html = template({title:'My Resume'});
             res.send(html);
         }catch(e){
             next(e);
@@ -46,9 +59,28 @@ module.exports = function(app){
 
 
     //api
-    app.get('/api/cv/json', function(req, res, next){
+    app.get('/api/resume/json', function(req, res, next){
         try{
-            res.json({name: 'Julian', document: 'CV'});
+            fs.readFile('./privateSettings.json', 'utf8', function(err, data){
+                res.json(JSON.parse(data).cv);
+            });
+        }catch(e){
+            next(e);
+        }
+    });
+    
+    app.get('/api/resume/pdf', function(req, res, next){
+        try{
+            var file = __dirname + '/static/pdfs/JulianInwoodResume.pdf';
+
+            var filename = path.basename(file);
+            var mimetype = mime.lookup(file);
+
+            res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            res.setHeader('Content-type', mimetype);
+
+            var filestream = fs.createReadStream(file);
+            filestream.pipe(res);
         }catch(e){
             next(e);
         }

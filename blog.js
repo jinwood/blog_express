@@ -14,8 +14,6 @@ function _readFiles(dirname, posts, onFileContent, onComplete){
     });
 }
 
-
-
 var getAllPosts = function(res, cb){
     var posts = [];
     _readFiles('./posts/', posts, function(posts){

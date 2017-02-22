@@ -7,6 +7,5 @@ block content
         p=post.title
         p Author - Julian
         p=post.dateCreated
-        each paragraph, x in post.content
-          p!=paragraph
+        div!{posts}
         hr

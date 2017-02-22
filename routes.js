@@ -86,4 +86,27 @@ module.exports = function(app){
         }
     });
 
+
+    // Handle 404
+    app.use(function(req, res) {
+        try{
+            var template = jade.compileFile(__dirname + '/source/templates/404.jade');
+            var html = template({title:'404: Something\'s missing...'});
+            res.send(html, 404);
+        }catch(e){
+
+        }
+    });
+    
+    // Handle 500
+    app.use(function(error, req, res, next) {
+        try{
+            var template = jade.compileFile(__dirname + '/source/templates/500.jade');
+            var html = template({title:'500: You blew it up!!'});
+            res.send(html, 404);
+        }catch(e){
+
+        }
+    });
+
 };

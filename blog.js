@@ -20,7 +20,10 @@ var getAllPosts = function(res, cb){
         posts = posts.sort(function(a,b){
             a = new Date(a.meta.DateCreated);
             b = new Date(b.meta.DateCreated);
-            return a>b ? -1 : a<b ? 1 : 0; //newest first
+            if(a < b)
+                return b;
+            else
+                return a;
         });
         cb(res, posts);
     });

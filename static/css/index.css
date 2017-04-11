@@ -11,7 +11,7 @@ body {
 }
 .header {
   margin-bottom: 0;
-  background: url("../../images/header.jpg");
+  background-color: #243e8c;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;

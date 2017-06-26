@@ -1,5 +1,6 @@
 var fs = require('fs');
 var metaMarked = require('meta-marked');
+var dateExtensions = require('./extensions/date.js');
 
 function _readFiles(dirname, posts, onFileContent, onComplete){
     fs.readdir(dirname, function(err, fileNames){
@@ -18,9 +19,9 @@ var getAllPosts = function(res, cb){
     var posts = [];
     _readFiles('./posts/', posts, function(posts){
         posts = posts.sort(function(a,b){
-            a = new Date(a.meta.DateCreated);
-            b = new Date(b.meta.DateCreated);
-            if(a < b)
+            var a = dateExtensions.stringToUkDate(a.meta.DateCreated)
+            var b = dateExtensions.stringToUkDate(b.meta.DateCreated)
+            if(a > b)
                 return b;
             else
                 return a;

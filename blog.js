@@ -19,12 +19,7 @@ var getAllPosts = function(res, cb){
     var posts = [];
     _readFiles('./posts/', posts, function(posts){
         posts = posts.sort(function(a,b){
-            var a = dateExtensions.stringToUkDate(a.meta.DateCreated)
-            var b = dateExtensions.stringToUkDate(b.meta.DateCreated)
-            if(a > b)
-                return b;
-            else
-                return a;
+            return dateExtensions.stringToUkDate(b.meta.DateCreated) - dateExtensions.stringToUkDate(a.meta.DateCreated);
         });
         cb(res, posts);
     });

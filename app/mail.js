@@ -1,5 +1,6 @@
 var nodemailer = require('nodemailer');
 var fs = require('fs');
+var logger = require('./logger');
 
 var sendMail  = function(body){
     var mailOpts, smtpTrans, credentials;
@@ -22,7 +23,9 @@ var sendMail  = function(body){
     };
 
     smtpTrans.sendMail(mailOpts, function(error, response){
-        //log there was an error
+        logger.warn('Error occured sending mail with content to'
+                    + mailOpts.to + ' with content - ' +
+                    + mailOpts.text + ' Error >>> ' + error);
     });
 };
 
@@ -48,7 +51,9 @@ var sendError = function(body){
     };
 
     smtpTrans.sendMail(mailOpts, function(error, response){
-        //log there was an error
+        logger.warn('Error occured sending error mail with content to'
+                    + mailOpts.to + ' with content - ' +
+                    + mailOpts.text + ' Error >>> ' + error);
     });
 }
 

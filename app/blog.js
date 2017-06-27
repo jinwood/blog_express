@@ -16,8 +16,7 @@ function _readFiles(dirname, posts, onFileContent, onComplete){
         fileNames.forEach(function(fileName){
             fs.readFile(dirname + fileName, 'utf-8', function(err, content){
                 posts.push(metaMarked(content));
-                if(posts.length === count)
-                    onFileContent(posts);
+                if(posts.length === count) onFileContent(posts);
             });
         });
     });

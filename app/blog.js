@@ -1,6 +1,14 @@
 var fs = require('fs');
 var metaMarked = require('meta-marked');
-var dateExtensions = require('./extensions/date.js');
+
+function _stringToUkDate (dateString) {
+    var split = dateString.split('/');
+    if (split.length !== 3) {
+        throw 'Invalid date input';
+    }
+    var month = split[1] - 1;
+    return new Date(split[2], month, split[0]);
+}
 
 function _readFiles(dirname, posts, onFileContent, onComplete){
     fs.readdir(dirname, function(err, fileNames){
@@ -19,7 +27,7 @@ var getAllPosts = function(res, cb){
     var posts = [];
     _readFiles('./posts/', posts, function(posts){
         posts = posts.sort(function(a,b){
-            return dateExtensions.stringToUkDate(b.meta.DateCreated) - dateExtensions.stringToUkDate(a.meta.DateCreated);
+            return _stringToUkDate(b.meta.DateCreated) - dateExtensions.stringToUkDate(a.meta.DateCreated);
         });
         cb(res, posts);
     });

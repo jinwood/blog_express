@@ -13,8 +13,8 @@ block content
   else
     div.row
     div.content
-    div.col-md-2
-    div.col-md-8.form-group
+    div.col-md-4
+    div.col-md-4.form-group
       form(action='/contact', name='contact', id='contact', method='post')
         fieldset
           p
@@ -31,4 +31,4 @@ block content
             textarea(name='message', cols='40', rows='10', id='message')
           p
             input(name='submit', type='submit', value='Send', id='submit').form-control.btn.btn-primary
-    div.col-md-2
+    div.col-md-4

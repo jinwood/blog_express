@@ -64,6 +64,9 @@ body {
 .main-content {
   margin: 50px auto;
 }
+.post ul {
+  margin-left: 40px;
+}
 fieldset {
   border: none;
 }

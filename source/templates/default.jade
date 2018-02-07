@@ -3,11 +3,9 @@ html
   head
     meta(name='viewport',content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
     link(rel='stylesheet', href='/css/index.css')
-    link(rel='stylesheet',href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
     title Julian Inwood - Software Developer
   body
-    .header.jumbotron
-      h1.page-title Julian Inwood
+    h1.page-title Julian Inwood
 
     div#menu
       ul
@@ -18,11 +16,7 @@ html
     
     br
 
-    .main-content
-      block content
+    block content
 
-    div.col-xs-12
-      .footer
-        p http://julianinwood.co.uk #{locals.date}
-  script(src='https://code.jquery.com/jquery-3.1.1.min.js' type='text/javascript')
-  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' type='text/javascript')
+    div
+      p http://julianinwood.co.uk #{locals.date}

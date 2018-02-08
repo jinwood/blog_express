@@ -1,9 +1,9 @@
 extend default
 
 block content
-  div.row
+  div
     each post, i in posts
-      div.col-md-8.col-md-offset-2.post
+      div
         span
           h2=post.meta.Title
             =" "

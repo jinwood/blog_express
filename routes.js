@@ -16,12 +16,6 @@ module.exports = function(app){
         res.send(html);
     });
 
-    app.get('/resume', function(req, res, next){
-        var template = jade.compileFile(__dirname + '/source/templates/resume.jade');
-        var html = template({title:'My Resume'});
-        res.send(html);
-    });
-
     app.get('/blog', function(req, res, next){
         blog.getAllPosts(res,function(res, posts){
             var template = jade.compileFile(__dirname + '/source/templates/blog.jade');            

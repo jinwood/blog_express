@@ -5,9 +5,11 @@ html
     link(rel='stylesheet', href='/css/index.css')
     title Julian Inwood - Software Developer
   body
-    h1.page-title Julian Inwood
+    div 
+        h1.page-title Julian Inwood
+        img.me(src="/images/me.jpeg")
 
-    div#menu
+    nav#menu
       ul
         li: a(href='/') Home
         li: a(href='https://github.com/jinwood',target='new') Github
@@ -19,4 +21,4 @@ html
     block content
 
     div
-      p http://julianinwood.co.uk #{locals.date}
+      p http://julianinwood.co.uk #{new Date().toLocaleDateString()}

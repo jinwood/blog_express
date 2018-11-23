@@ -84,3 +84,10 @@ fiedlset {
 pre {
   overflow: scroll;
 }
+.page-title {
+    display: inline-block;
+}
+.me {
+    display: inline-block;
+    width: 150px;
+}

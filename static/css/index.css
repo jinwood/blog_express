@@ -84,27 +84,3 @@ fiedlset {
 pre {
   overflow: scroll;
 }
-.header img {
-    float: left;
-    width: 100px;
-    height: auto;
-}
-.header h1 {
-  position: relative;
-  top: 18px;
-  left: 10px;
-}
-.logo-container {
-  
-}
-.me {
- display: block;
-/*  position: relative;
-  top: 50%;
-  transform: translate( -50%);
-  */
-}
-.title-container {
-    height: 140px;
-}
-

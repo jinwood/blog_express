@@ -103,6 +103,10 @@ pre {
   margin-top: 26px;
 }
 
+.main-content li {
+  line-height: 17px;
+}
+
 div.clear {
   clear: both;
 }

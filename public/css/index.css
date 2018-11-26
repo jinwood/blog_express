@@ -2,14 +2,14 @@
 /* from https://github.com/oxalorg/sakura */
 html {
   font-size: 62.5%;
-  font-family: Georgia;
+  font-family: 'Roboto', sans-serif;
 }
 body {
   font-size: 1.8rem;
   line-height: 1.618;
   max-width: 38em;
   margin: auto;
-  color: #4a4a4a;
+  color: #002b3#002b36;
   background-color: #f4ecd8;
   padding: 13px;
 }
@@ -74,7 +74,7 @@ nav {
 #menu a {
   margin-top: 0.5emb;
   display: block;
-  color: #000;
+  color: #586e75;
   text-decoration: none;
   text-align: center;
 }
@@ -95,8 +95,7 @@ pre {
     display: inline;
     width: auto;
     margin-left: 21px;
-   display: block-block;
-}
+ }
 .title-container {
     height: 140px;
 }

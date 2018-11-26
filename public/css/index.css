@@ -60,12 +60,11 @@ h6 {
   font-size: 1em;
 }
 nav {
+  display: inline-block;
 }
 #menu ul {
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-  line-height: 20px;
+  padding: 0px; 
+  margin: 0px 10px;
 }
 #menu li {
   list-style: none;
@@ -86,26 +85,23 @@ pre {
   overflow: scroll;
 }
 .header img {
-    float: left;
-    height: 100px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+  float: left;
+  height: 100px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  display: inline-block;
 }
 .header h1 {
-    margin-left: 10px;
-}
-.logo-container {
-  
-}
-.me {
- display: block;
-/*  position: relative;
-  top: 50%;
-  transform: translate( -50%);
-  */
+    display: inline;
+    width: auto;
+    margin-left: 21px;
+   display: block-block;
 }
 .title-container {
     height: 140px;
+}
+.main-content {
+  margin-top: 26px;
 }
 
 div.clear {

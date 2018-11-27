@@ -104,7 +104,15 @@ pre {
 }
 
 .main-content li {
-  line-height: 17px;
+  line-height: 21px;
+}
+
+section p:not(:first-child){
+  margin-top: 0px;
+}
+
+section p:not(:last-child){
+  margin-bottom: 0px;
 }
 
 div.clear {
